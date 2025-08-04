@@ -13,7 +13,7 @@ spec:
       labels:
         app: test-allow
     spec:
-      shareProcessNamespace: false # <--- enable PID namespace sharing
+      hostPID: false # <--- enable PID namespace sharing
       containers:
       - name: nginx
         image: nginx:alpine
