@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privileged-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: privileged-test
+  template:
+    metadata:
+      labels:
+        app: privileged-test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          securityContext:
+            privileged: true
+          command: ["sh","-c","sleep 3600"]
+
